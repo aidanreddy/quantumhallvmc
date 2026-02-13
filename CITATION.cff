@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the associated paper."
+preferred-citation:
+  type: article
+  title: "Quantum melting a Wigner crystal into Hall liquids"
+  authors:
+    - family-names: "Reddy"
+      given-names: "Aidan P"
+    - family-names: "Fu"
+      given-names: "Liang"
+  journal: "arXiv preprint arXiv:2508.21000"
+  year: 2025

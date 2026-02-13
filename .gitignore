@@ -1,0 +1,17 @@
+.DS_Store
+
+# Julia
+*.jl.cov
+*.jl.*.cov
+*.jl.mem
+*.ji
+*.so
+*.dylib
+*.dll
+*.dSYM
+*.o
+*.a
+*.lib
+*.exe
+Manifest.toml
+LocalPreferences.toml
