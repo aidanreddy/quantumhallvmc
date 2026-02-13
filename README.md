@@ -30,14 +30,6 @@ julia --project=. -e 'using QuantumHallVMC; println("QuantumHallVMC loaded")'
 
 See `INSTALL.md`.
 
-## Code Style
-
-- Use `snake_case` for function names.
-- Use derivative prefixes consistently:
-`calc_dx_*`, `calc_grad_*`, `calc_laplacian_*`, `calc_pi_*`, `calc_pi_square_*`.
-- Prefer ASCII identifiers for public APIs.
-- Keep call sites and notebooks updated when function names change.
-
 ## Citation
 
 If you use this code, please cite the associated paper. See `CITATION.cff`.
