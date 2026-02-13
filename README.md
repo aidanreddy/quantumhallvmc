@@ -10,6 +10,8 @@ The code implements VMC optimization and sampling of a Slater-Jastrow wavefuncti
 
 Wavefunction optimization uses stochastic reconfiguration.
 
+See supplemental_material.pdf for further discussion of methods.
+
 ## Quickstart
 
 From the repository root:
@@ -19,24 +21,26 @@ julia --project=. -e 'import Pkg; Pkg.instantiate()'
 julia --project=. -e 'using QuantumHallVMC; println("QuantumHallVMC loaded")'
 ```
 
-Run tests:
-
-```bash
-julia --project=. -e 'import Pkg; Pkg.test()'
-```
-
 ## Examples
 
-- `/Users/aidanreddy/Desktop/VMC/notebooks/demo.ipynb`: Landau-level / plane-wave orbital workflow
-- `/Users/aidanreddy/Desktop/VMC/notebooks/demo_gaussian.ipynb`: Gaussian-orbital workflow
+- `notebooks/demo.ipynb`: Landau-level / plane-wave orbital workflow
+- `notebooks/demo_gaussian.ipynb`: Gaussian orbital workflow
 
 ## Installation and dependencies
 
-See `/Users/aidanreddy/Desktop/VMC/INSTALL.md`.
+See `INSTALL.md`.
+
+## Code Style
+
+- Use `snake_case` for function names.
+- Use derivative prefixes consistently:
+`calc_dx_*`, `calc_grad_*`, `calc_laplacian_*`, `calc_pi_*`, `calc_pi_square_*`.
+- Prefer ASCII identifiers for public APIs.
+- Keep call sites and notebooks updated when function names change.
 
 ## Citation
 
-If you use this code, please cite the associated paper. See `/Users/aidanreddy/Desktop/VMC/CITATION.cff`.
+If you use this code, please cite the associated paper. See `CITATION.cff`.
 
 ```bibtex
 @article{reddy2025quantum,

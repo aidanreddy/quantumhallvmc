@@ -16,7 +16,6 @@ includes the notebook packages so a single install covers scripts and notebooks.
 - FFTW
 - LinearAlgebra (stdlib)
 - Statistics (stdlib)
-- JLD2
 - Plots
 - ImageFiltering
 - Random (stdlib)
