@@ -10,7 +10,7 @@ The code implements VMC optimization and sampling of a Slater-Jastrow wavefuncti
 
 Wavefunction optimization uses stochastic reconfiguration.
 
-See supplemental_material.pdf for further discussion of methods.
+The supplemental material file, available with the citation below and on arXiv (arXiv:2508.21000), contains detailed methodology.
 
 ## Quickstart
 

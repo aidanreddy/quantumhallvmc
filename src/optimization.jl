@@ -76,7 +76,7 @@ function opt_wf(
     f = zeros(ComplexF64, n_params) #force
     S = zeros(ComplexF64, (n_params, n_params)) #quantum metric
     C, M, Λ = calc_C(n_band, nk, nu, D_params)
-    D_cd_D_params = [exp(1im)] #dummy value for first optimization step
+    dDparams_C = [exp(1im)] #dummy value for first optimization step
     δ = zeros(Float64, length(params)) #initialize parameter shift vector. 12 Jul 2025
     for i in 1:n_opt #optimization steps
         #build callable functions for a given parameter set α
@@ -90,7 +90,7 @@ function opt_wf(
         dparams_u_func(r) = calc_grad_params_u_sin_spl(r, G1, G2, c)
         if opt_D
             C, M, Λ = calc_C(n_band, nk, nu, D_params)
-            D_cd_D_params = calc_dparams_C(n_band, nk, nu, M, Λ) #only consider part of C that matters for D
+            dDparams_C = calc_dparams_C(n_band, nk, nu, M, Λ) #only consider part of C that matters for D
         end
         #run random walks
         tic = time()
@@ -114,7 +114,7 @@ function opt_wf(
                 dy_u_func,
                 laplacian_u_func,
                 dparams_u_func,
-                D_cd_D_params,
+                dDparams_C,
                 NJ,
                 ND,
             )

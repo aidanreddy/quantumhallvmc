@@ -198,7 +198,7 @@ function sample_opt(
     dy_u_func,
     laplacian_u_func,
     dparams_u_func,
-    D_cd_D_params,
+    dDparams_C,
     NJ,
     ND,
 )
@@ -372,7 +372,7 @@ function sample_opt(
                     end
                 end
                 if opt_D
-                    delta[(NJ + 1):end] = calc_delta_orbital(D_inv, O, C, D_cd_D_params)
+                    delta[(NJ + 1):end] = calc_delta_orbital(D_inv, O, C, dDparams_C)
                 end
             else
                 delta = copy(delta_prev) #copy(ΔWalk[:,I-1])
@@ -386,7 +386,7 @@ function sample_opt(
                         end
                     end
                     if opt_D
-                        delta[(NJ + 1):end] = calc_delta_orbital(D_inv, O, C, D_cd_D_params)
+                        delta[(NJ + 1):end] = calc_delta_orbital(D_inv, O, C, dDparams_C)
                     end
                 end
             end

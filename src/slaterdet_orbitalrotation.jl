@@ -210,16 +210,8 @@ function calc_dparams_C(
             i = I
             for J in 1:(n_band - nu)
                 j = J + nu
-                VRe = 
-                    1im * (
-                        conj(Uk[i, :]) * transpose(Uk[j, :]) +
-                        conj(Uk[j, :]) * transpose(Uk[i, :])
-                    ) #note extra factor of i because the matrix being exponentiated is not K, but 1im*K
-                VIm = 
-                    -1 * (
-                        conj(Uk[i, :]) * transpose(Uk[j, :]) -
-                        conj(Uk[j, :]) * transpose(Uk[i, :])
-                    )
+                VRe = 1im * (conj(Uk[i, :]) * transpose(Uk[j, :]) + conj(Uk[j, :]) * transpose(Uk[i, :])) #note extra factor of i because the matrix being exponentiated is not K, but 1im*K
+                VIm = -1 * (conj(Uk[i, :]) * transpose(Uk[j, :]) - conj(Uk[j, :]) * transpose(Uk[i, :]))
                 d_c_d_params[k, :, :, I, J, 1] = (Uk * (VRe .* Gk) * (Uk'))[1:nu, :]
                 d_c_d_params[k, :, :, I, J, 2] = (Uk * (VIm .* Gk) * (Uk'))[1:nu, :]
             end
@@ -232,27 +224,20 @@ function calc_delta_orbital(
     D_inv::Matrix{ComplexF64},
     O::Array{ComplexF64},
     C::Array{ComplexF64},
-    D_cd_D_params::Array{ComplexF64},
+    dDparams_C::Array{ComplexF64},
 )::Array{ComplexF64}
     nk = size(C)[1]
     n_band = size(C)[3]
-    nu = size(D_cd_D_params)[2]
-    ddet_dd_c_overdet_d = zeros(ComplexF64, (nk, nu, n_band))
+    nu = size(dDparams_C)[2]
+    dC_log_detD = zeros(ComplexF64, (nk, nu, n_band))
     delta_orbital_raw = zeros(ComplexF64, (nk, nu, n_band - nu, 2))
     for k in axes(C, 1), l in axes(C, 3)
-        d_dd_cd_row = O[k, l, :]
         for i in 1:nu
-            ddet_dd_c_overdet_d[k, i, l] = calc_D_ratio(
-                d_dd_cd_row, D_inv[:, k + (i - 1) * nk]
-            )
+            dC_log_detD[k, i, l] = calc_D_ratio(O[k, l, :], D_inv[:, k + (i - 1) * nk])
         end
     end
-    for k in axes(D_cd_D_params, 1),
-        m in axes(D_cd_D_params, 2),
-        n in axes(D_cd_D_params, 3)
-
-        delta_orbital_raw[k, :, :, :] .+=
-            ddet_dd_c_overdet_d[k, m, n] .* D_cd_D_params[k, m, n, :, :, :]
+    for k in axes(dDparams_C, 1), m in axes(dDparams_C, 2), n in axes(dDparams_C, 3)
+        delta_orbital_raw[k, :, :, :] .+= dC_log_detD[k, m, n] .* dDparams_C[k, m, n, :, :, :]
     end
     return vec(delta_orbital_raw)
 end
