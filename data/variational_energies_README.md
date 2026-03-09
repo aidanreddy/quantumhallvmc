@@ -18,7 +18,7 @@ The Madelung energy is $E_\mathrm{mad} = -1.106103\ \mathrm{Ha}/r_s$.
 ## Wavefunction types
 
 - **Integer quantum Hall** — Slater-Jastrow with a Slater determinant built from the lowest Landau level single-particle orbitals; describes the quantum Hall liquid phase.
-- **Landau level expansion** — Slater-Jastrow with orbitals expressed as a variational expansion over multiple Landau levels; describes the Wigner crystal phase.
+- **Landau level expansion** — Slater-Jastrow with orbitals expressed as a variational expansion over multiple Landau levels; capable of describing both crystal and liquid phases, but in the context of these data, it describes the crystal phase.
 - **Gaussian** — Slater-Jastrow with Gaussian orbitals centered on crystal lattice sites; an alternative Wigner crystal ansatz used for cross-checks.
 - **Fermi liquid** — Slater-Jastrow with plane-wave orbitals filling the Fermi sea; zero-field liquid ansatz.
 - **Planewave expansion** — Slater-Jastrow with a variational expansion of plane-wave orbitals; zero-field crystal ansatz.
@@ -27,6 +27,3 @@ The Madelung energy is $E_\mathrm{mad} = -1.106103\ \mathrm{Ha}/r_s$.
 
 - All energies are per particle.
 - The energy combination $(E - E_\mathrm{mad}) r_s^{3/2}$ is used because it is slowly varying in $r_s$, making trends easier to resolve numerically.
-- Phase boundaries are estimated by linearly interpolating the liquid and crystal energies near the crossing point.
-- At $\nu = 1$, the liquid-crystal transition is located near $r_s \approx 47$; at $\nu = 2$, near $r_s \approx 38$; at $B = 0$, near $r_s \approx 33$.
-- Finite-size effects are assessed by comparing results at $N = 9, 36, 121, 144$ ($\nu=1$) and $N = 64$ ($\nu=2$).
