@@ -29,4 +29,4 @@ The Madelung energy is $E_\mathrm{mad} = -1.106103\ \mathrm{Ha}/r_s$.
 - The energy combination $(E - E_\mathrm{mad}) r_s^{3/2}$ is used because it is slowly varying in $r_s$, making trends easier to resolve numerically.
 - Phase boundaries are estimated by linearly interpolating the liquid and crystal energies near the crossing point.
 - At $\nu = 1$, the liquid-crystal transition is located near $r_s \approx 47$; at $\nu = 2$, near $r_s \approx 38$; at $B = 0$, near $r_s \approx 33$.
-- Finite-size effects are assessed by comparing results at $N = 9, 36, 121, 144$ ($\nu=1$) and $N = 64$ ($\nu=2$). Twist-averaging is applied at $\nu \neq 0$ but not at $B = 0$.
+- Finite-size effects are assessed by comparing results at $N = 9, 36, 121, 144$ ($\nu=1$) and $N = 64$ ($\nu=2$).
